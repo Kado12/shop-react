@@ -36,20 +36,60 @@ export const ShoppingProviders = ({ children }) => {
       .catch(error => console.log(error))
   }, [])
 
-  // Search Product
+  // Search Product by Title
   const [searchByTitle, setSearchByTitle] = useState(null)
+
+  // Search Product by Category
+
+  // const currentPath = window.location.pathname
+  // let category = currentPath.substring(currentPath.lastIndexOf('/') + 1)
+
+  // if (category.includes('%20')) {
+  //   category = category.replace('%20', ' ')
+  // }
+  // let itemCategory = context.items?.filter(item => item.category === category)
+  const [searchByCategory, setSearchByCategory] = useState(null)
 
   // Filtered Products
   const [filteredItems, setFilteredItems] = useState(null)
+
   const filteredItemsByTitle = (items, searchByTitle) => {
     return items?.filter(item => item.title.toLowerCase().includes(searchByTitle.toLowerCase()))
   }
-  useEffect(() => {
-    if (searchByTitle) {
-      setFilteredItems(filteredItemsByTitle(items, searchByTitle))
+
+  const filteredItemsByCategory = (items, searchByCategory) => {
+    return items?.filter(item => item.category.toLowerCase() === searchByCategory.toLowerCase())
+  }
+
+  const filterBy = (searchType, items, searchByTitle, searchByCategory) => {
+    if (searchType === 'by-title') {
+      return filteredItemsByTitle(items, searchByTitle)
     }
-  }, [items, searchByTitle])
-  console.log(filteredItems)
+    if (searchType === 'by-category') {
+      return filteredItemsByCategory(items, searchByCategory)
+    }
+    if (searchType === 'by-title-and-category') {
+      return filteredItemsByCategory(items, searchByCategory).filter(item => item.title.toLowerCase().includes(searchByTitle.toLowerCase()))
+    }
+    if (!searchType) {
+      return items
+    }
+  }
+
+  useEffect(() => {
+    if (searchByTitle && searchByCategory) {
+      setFilteredItems(filterBy('by-title-and-category', items, searchByTitle, searchByCategory))
+    }
+    if (searchByTitle && !searchByCategory) {
+      setFilteredItems(filterBy('by-title', items, searchByTitle, searchByCategory))
+    }
+    if (searchByCategory && !searchByTitle) {
+      setFilteredItems(filterBy('by-category', items, searchByTitle, searchByCategory))
+    }
+    if (!searchByCategory && !searchByTitle) {
+      setFilteredItems(filterBy(null, items, searchByTitle, searchByCategory))
+    }
+  }, [items, searchByTitle, searchByCategory])
 
   return (
     <ShoppingCartContext.Provider value={{
@@ -73,6 +113,8 @@ export const ShoppingProviders = ({ children }) => {
       setSearchByTitle,
       filteredItems,
       setFilteredItems,
+      searchByCategory,
+      setSearchByCategory,
     }}>
       {children}
     </ShoppingCartContext.Provider>
