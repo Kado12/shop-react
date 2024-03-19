@@ -3,6 +3,10 @@ import { XMarkIcon } from "@heroicons/react/24/outline"
 const OrderCard = props => {
   // eslint-disable-next-line react/prop-types
   const { id, title, imageUrl, price, handleDelete } = props
+  let renderXMarkIcon
+  if (handleDelete) {
+    renderXMarkIcon = <XMarkIcon onClick={() => handleDelete(id)} className="w-6 h-6 cursor-pointer" />
+  }
   return (
     <div className="flex justify-between items-center p-2">
       <div className="flex items-center gap-2 w-2/3 justify-start">
@@ -15,8 +19,8 @@ const OrderCard = props => {
       </div>
       <div className="flex items-center gap-2 w-1/3 justify-end">
         <p className="text-lg font-semibold">${price}</p>
-        <XMarkIcon onClick={() => handleDelete(id)} className="w-6 h-6 cursor-pointer" />
       </div>
+      {renderXMarkIcon}
     </div>
   )
 }
