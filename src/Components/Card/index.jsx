@@ -61,6 +61,7 @@ const Card = (data) => {
         <img
           className="w-full h-full object-cover rounded-lg"
           src={data.data.image} alt={data.data.title}
+          loading="lazy"
         />
         {renderIcon(data.data.id)}
       </figure>

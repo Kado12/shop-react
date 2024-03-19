@@ -1,28 +1,46 @@
-import { useState, useEffect } from "react"
+import { useContext } from "react"
 import { Layout } from "../../Components/Layout"
 import { Card } from "../../Components/Card"
 import { ProductDetail } from "../../Components/ProductDetail"
+import { ShoppingCartContext } from "../../Context"
 
 function Home() {
-  const [items, setItems] = useState(null)
-  useEffect(() => {
-    const url = 'https://fakestoreapi.com/products'
-    fetch(url)
-      .then(res => res.json())
-      .then(data => setItems(data))
-      .catch(error => console.log(error))
-  }, [])
+  const context = useContext(ShoppingCartContext)
+
+  const renderView = () => {
+    if (context.searchByTitle?.length > 0) {
+      if (context.filteredItems?.length > 0) {
+        return (
+          context.filteredItems?.map((item) => (
+            <Card key={item.id} data={item} />
+          ))
+        )
+      } else {
+        return ("Don't coincidences")
+      }
+    } else {
+      return (
+        context.items?.map((item) => (
+          <Card key={item.id} data={item} />
+        ))
+      )
+    }
+  }
 
   return (
     <>
       <Layout >
-        Home
+        <div>
+          <h1 className="text-xl mb-3 mt-3">Exclusive Products</h1>
+        </div>
+        <input
+          className="p-4 mb-6 border border-black rounded-md w-72"
+          type="text"
+          placeholder="Search a product"
+          onChange={(event) => context.setSearchByTitle(event.target.value)}
+        />
         <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg max-[950px]:grid-cols-2 max-[950px]:w-[80%] max-[425px]:grid-cols-1 max-[425px]:w-[80%]">
-          {
-            items?.map((item) => (
-              <Card key={item.id} data={item} />
-            ))
-          }
+          {renderView()}
         </div>
         <ProductDetail />
       </Layout>
