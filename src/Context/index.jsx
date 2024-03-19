@@ -4,9 +4,6 @@ export const ShoppingCartContext = createContext()
 
 // eslint-disable-next-line react/prop-types
 export const ShoppingProviders = ({ children }) => {
-  // Shopping Card
-  const [count, setCount] = useState(0)
-
   // Product Detail - Open / Close
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false)
   const openProductDetail = () => setIsProductDetailOpen(true)
@@ -93,8 +90,6 @@ export const ShoppingProviders = ({ children }) => {
 
   return (
     <ShoppingCartContext.Provider value={{
-      count,
-      setCount,
       isProductDetailOpen,
       openProductDetail,
       closeProductDetail,

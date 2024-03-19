@@ -95,7 +95,7 @@ const Navbar = () => {
         </li>
         <li className="flex justify-center items-center cursor-pointer">
           <ShoppingCartIcon className="w-4 h-4" onClick={() => { context.closeProductDetail(), context.openCheckoutSideMenu() }} />
-          <div>{context.count}</div>
+          <div>{context.cartProducts.length}</div>
         </li>
       </ul>
     </nav>

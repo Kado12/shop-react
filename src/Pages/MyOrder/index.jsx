@@ -12,7 +12,6 @@ function MyOrder() {
   if (index === 'last') {
     index = context.order?.length - 1
   }
-  console.log(context.order)
   return (
     <Layout>
       <div className="flex justify-between w-80 items-center">

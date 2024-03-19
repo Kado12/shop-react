@@ -14,15 +14,7 @@ const CheckoutSideMenu = () => {
   const handleDelete = (id) => {
     const filteredProducts = context.cartProducts.filter(product => product.id != id)
     context.setCartProducts(filteredProducts)
-    context.count -= 1
-    context.setCount(context.count)
   }
-
-  // const plusCard = () => {
-  //   const plusPrice = context.cartProducts.reduce((total, product) => total + product.price, 0)
-  //   return plusPrice.toFixed(2)
-  // }
-  // const total = plusCard()
 
   const handleCheckout = () => {
     const date = new Date()
@@ -38,7 +30,8 @@ const CheckoutSideMenu = () => {
     }
     context.setOrder([...context.order, orderToAdd])
     context.setCartProducts([])
-    context.setCount(0)
+    context.setSearchByTitle(null)
+    context.closeCheckoutSideMenu()
   }
 
 
@@ -71,14 +64,13 @@ const CheckoutSideMenu = () => {
       </div>
       <div className="flex justify-between items-center p-6 bg-white rounded-md">
         <h2 className="font-medium text-lg">Total</h2>
-        {/* <h2 className="font-medium text-lg">${total}</h2> */}
         <h2 className="font-medium text-lg">${totalPrice(context.cartProducts)}</h2>
       </div>
       <div className='flex items-center justify-center'>
         <Link to='/my-orders/last'>
           <button
             className='bg-black text-white m-auto w-80 mb-5 p-3 rounded-lg flex items-center justify-center gap-2'
-            onClick={() => { handleCheckout(), context.closeCheckoutSideMenu() }}
+            onClick={() => { handleCheckout() }}
           >
             Checkout
             <CurrencyDollarIcon className='w-6 h-6' />

@@ -6,26 +6,18 @@ import { ShoppingCartContext } from "../../Context"
 
 function Home() {
   const context = useContext(ShoppingCartContext)
-  console.log(context.filteredItems)
 
   const renderView = () => {
-    if (context.searchByTitle?.length > 0) {
-      if (context.filteredItems?.length > 0) {
-        return (
-          context.filteredItems?.map((item) => (
-            <Card key={item.id} data={item} />
-          ))
-        )
-      } else {
-        return ("Don't coincidences")
-      }
-    } else {
+    if (context.filteredItems?.length > 0) {
       return (
         context.filteredItems?.map((item) => (
           <Card key={item.id} data={item} />
         ))
       )
+    } else {
+      return ("Don't coincidences")
     }
+
   }
 
 
