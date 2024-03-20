@@ -1,0 +1,20 @@
+.card-item {
+  margin: 10px;
+}
+
+.card-item figure {
+  border: 1px solid var(--primary-color);
+  border-radius: 25px 0;
+  box-shadow:
+    8px 8px 0px var(--primary-color),
+    -8px -8px 0px var(--primary-color);
+}
+
+.card-item figure img {
+  border-radius: 20px 0;
+}
+
+.card-item figure span {
+  background-color: #8C326D99;
+  color: var(--bg-color);
+}

@@ -14,13 +14,13 @@ function MyOrder() {
   }
   return (
     <Layout>
-      <div className="flex justify-between w-80 items-center">
+      <div className="flex justify-between w-80 items-center mt-4">
         <Link to='/my-orders'>
-          <ChevronLeftIcon className="h-6 w-6 cursor-pointer" />
+          <ChevronLeftIcon className="h-6 w-6 cursor-pointer hover:text-[#8C326D] ml-2" />
         </Link>
-        <h1>My Order</h1>
+        <h1 className="mr-3">My Order</h1>
       </div>
-      <div className='flex flex-col w-80'>
+      <div className='flex flex-col w-80 gap-3'>
         {
           context.order?.[index].products.map(product => (
             <OrderCard

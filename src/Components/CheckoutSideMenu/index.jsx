@@ -37,14 +37,14 @@ const CheckoutSideMenu = () => {
 
   return (
     <aside
-      className={`${context.isCheckoutSideMenuOpen ? 'flex' : 'hidden'} checkout-side-menu flex-col fixed bg-white right-0 border border-black rounded-md`}
+      className={`${context.isCheckoutSideMenuOpen ? 'checkout-side-menu flex right-0' : 'hidden right-[-400px]'} flex-col fixed bg-white  border-l-8 border-[#8C326D] max-[768px]:w-[320px]`}
     >
       <div className="flex justify-between items-center p-6">
         <h2 className="font-medium text-lg">My Order</h2>
         <div className='cursor-pointer'>
           <XMarkIcon
             onClick={() => context.closeCheckoutSideMenu()}
-            className='w-6 h-6'
+            className='w-6 h-6 hover:text-[#8C326D]'
           />
         </div>
       </div>
@@ -69,7 +69,7 @@ const CheckoutSideMenu = () => {
       <div className='flex items-center justify-center'>
         <Link to='/my-orders/last'>
           <button
-            className='bg-black text-white m-auto w-80 mb-5 p-3 rounded-lg flex items-center justify-center gap-2'
+            className='bg-[#8C326D] text-white m-auto w-80 mb-5 p-3 rounded-lg flex items-center justify-center gap-2 hover:bg-white hover:text-[#8C326D] hover:outline hover:outline-[#8C326D] duration-300 max-[768px]:w-[300px]'
             onClick={() => { handleCheckout() }}
           >
             Checkout

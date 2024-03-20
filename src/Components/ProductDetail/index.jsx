@@ -8,14 +8,14 @@ const ProductDetail = () => {
 
   return (
     <aside
-      className={`${context.isProductDetailOpen ? 'flex' : 'hidden'} product-detail flex-col fixed bg-white right-0 border border-black rounded-md`}
+      className={`${context.isProductDetailOpen ? 'slice flex right-0' : 'hidden right-[-400px]'} product-detail flex-col fixed bg-white  border-l-8 border-[#8C326D] max-[768px]:w-[320px] overflow-x-auto`}
     >
       <div className="flex justify-between items-center p-6">
         <h2 className="font-medium text-lg">Detail</h2>
         <div className='cursor-pointer'>
           <XMarkIcon
             onClick={() => context.closeProductDetail()}
-            className='w-6 h-6'
+            className='w-6 h-6 hover:text-[#8C326D]'
           />
         </div>
       </div>

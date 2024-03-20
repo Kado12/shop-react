@@ -1,6 +1,8 @@
 import { useContext } from "react"
 import { ShoppingCartContext } from "../../Context"
 import { PlusIcon, CheckIcon } from "@heroicons/react/24/outline"
+import './styles.css'
+
 const Card = (data) => {
   const context = useContext(ShoppingCartContext)
 
@@ -23,11 +25,11 @@ const Card = (data) => {
     if (isInCart) {
       return (
         <div
-          className="absolute top-0 right-0 flex justify-center items-center bg-black w-6 h-6 rounded-full m-2"
+          className="absolute top-0 right-0 flex justify-center items-center bg-[#8C326D] w-6 h-6 rounded-full m-2"
           onClick={(event) => event.stopPropagation()}
         >
           <CheckIcon
-            className="w-5 h-5 text-green-500"
+            className="w-5 h-5 text-white"
           />
         </div >
       )
@@ -38,7 +40,7 @@ const Card = (data) => {
           onClick={(event) => addProductsToCart(event, data.data)}
         >
           <PlusIcon
-            className="w-5 h-5"
+            className="w-5 h-5 text-[#8C326D]"
           />
         </div >
       )
@@ -48,12 +50,12 @@ const Card = (data) => {
 
   return (
     <div
-      className="flex flex-col cursor-pointer w-60 h-80 rounded-lg bg-cyan-900/20 m-auto p-[5px]"
+      className="card-item flex flex-col cursor-pointer w-60 h-80 rounded-lg m-auto p-1.5 max-[768px]:w-52"
       onClick={() => showProduct(data.data)}
     >
       <figure className="relative mb-3 w-full h-4/5 ">
         <span
-          className="absolute rounded-lg bottom-0 left-0 bg-white/60 text-black text-sm px-3 py-0.5 m-2 capitalize"
+          className="absolute rounded-lg bottom-0 left-0 text-sm px-3 py-0.5 m-2 capitalize"
         >
           {data.data.category},
         </span>
@@ -64,7 +66,7 @@ const Card = (data) => {
         />
         {renderIcon(data.data.id)}
       </figure>
-      <div className="flex justify-between h-1/6">
+      <div className="flex justify-between h-1/5">
         <span className="text-sm font-light overflow-hidden">{data.data.title}</span>
         <span className="text-lg font-medium">${data.data.price}</span>
       </div>

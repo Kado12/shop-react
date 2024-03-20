@@ -1,5 +1,19 @@
 .product-detail {
   width: 360px;
   height: calc(100vh - 80px);
-  top: 80px
+  top: 80px;
+}
+
+.slice {
+  animation: normal .3s slice;
+}
+
+@keyframes slice {
+  0% {
+    right: -400px;
+  }
+
+  100% {
+    right: 0;
+  }
 }

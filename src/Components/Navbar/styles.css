@@ -1,0 +1,31 @@
+nav {
+  border-bottom: 1px solid var(--primary-color);
+}
+
+li {
+  padding: 5px;
+  transition: .3s;
+  text-align: center;
+}
+
+li:hover {
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+li:nth-child(1):hover {
+  border: none;
+  color: #00000099;
+}
+
+.shopping-cart:hover {
+  border: none;
+}
+
+.shopping-cart div div {
+  color: var(--bg-color);
+}
+
+.shopping-cart div div {
+  background-color: var(--primary-color);
+}
