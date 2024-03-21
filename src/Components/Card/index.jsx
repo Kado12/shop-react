@@ -10,6 +10,7 @@ const Card = (data) => {
     context.openProductDetail()
     context.setProductToShow(productDetail)
     context.closeCheckoutSideMenu()
+    context.closeNavbarMobile()
   }
 
   const addProductsToCart = (event, productData) => {
@@ -17,6 +18,7 @@ const Card = (data) => {
     context.setCartProducts([...context.cartProducts, productData])
     context.openCheckoutSideMenu()
     context.closeProductDetail()
+    context.closeNavbarMobile()
   }
 
   const renderIcon = (id) => {

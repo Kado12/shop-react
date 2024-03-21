@@ -14,6 +14,11 @@ export const ShoppingProviders = ({ children }) => {
   const openCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(true)
   const closeCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(false)
 
+  // Checkout Side Menu - Open / Close
+  const [isNavbarMobileOpen, setIsNavbarMobileOpen] = useState(false)
+  const openNavbarMobile = () => setIsNavbarMobileOpen(true)
+  const closeNavbarMobile = () => setIsNavbarMobileOpen(false)
+
   // Product Detail - Show Product
   const [productToShow, setProductToShow] = useState({})
 
@@ -37,14 +42,6 @@ export const ShoppingProviders = ({ children }) => {
   const [searchByTitle, setSearchByTitle] = useState(null)
 
   // Search Product by Category
-
-  // const currentPath = window.location.pathname
-  // let category = currentPath.substring(currentPath.lastIndexOf('/') + 1)
-
-  // if (category.includes('%20')) {
-  //   category = category.replace('%20', ' ')
-  // }
-  // let itemCategory = context.items?.filter(item => item.category === category)
   const [searchByCategory, setSearchByCategory] = useState(null)
 
   // Filtered Products
@@ -90,6 +87,9 @@ export const ShoppingProviders = ({ children }) => {
 
   return (
     <ShoppingCartContext.Provider value={{
+      isNavbarMobileOpen,
+      openNavbarMobile,
+      closeNavbarMobile,
       isProductDetailOpen,
       openProductDetail,
       closeProductDetail,

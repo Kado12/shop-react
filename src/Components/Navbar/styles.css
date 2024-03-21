@@ -2,10 +2,13 @@ nav {
   border-bottom: 1px solid var(--primary-color);
 }
 
+.responsive-nav {
+  border-bottom: 1px solid var(--primary-color);
+}
+
 li {
   padding: 5px;
   transition: .3s;
-  text-align: center;
 }
 
 li:hover {
@@ -28,4 +31,22 @@ li:nth-child(1):hover {
 
 .shopping-cart div div {
   background-color: var(--primary-color);
+}
+
+aside nav li:hover {
+  border: none;
+}
+
+.nav-mobile {
+  animation: normal .5s sliceTop;
+}
+
+@keyframes sliceTop {
+  0% {
+    top: -900px;
+  }
+
+  100% {
+    top: 80px;
+  }
 }
